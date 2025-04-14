@@ -1,0 +1,75 @@
+.phone {
+    width: 393px;       /* simulated phone width */
+    height: 852px;      /* simulated phone height */
+    overflow-y: auto;   /* scroll vertically */
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;     /* center it horizontally */
+    box-sizing: border-box;
+    -ms-overflow-style: none;  /* IE, Edge */
+    scrollbar-width: none;     /* Firefox */
+    cursor: url(../Images/Ellipse1.png) 16 16, auto;
+}
+
+.phone::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    width: 100%;
+    min-height: 100%;
+    position: relative;       /* 1) Container is now positioned */
+}
+
+.my-button {
+    /* Style your button here */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: #4caf4f63;
+    color: #fff;
+    border: none;
+    cursor: inherit;
+  }
+
+  .menubar-container {
+    position: sticky;
+    bottom: 0;
+    z-index: 10; 
+  }
+  
+  /* Make sure the image is 100% wide (if that's what you want) */
+  .menubar-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+    .btn1 {
+    top: 40px;       /* relative to .menubar-container’s top */
+    left: 13%;
+    width: 50px;
+    height: 50px;
+  }
+  .btn2 {
+    top: 40px;
+    left: 30%;
+    width: 50px;
+    height: 50px;
+  }
+  .btn3 {
+    top: 32px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .btn4 {
+    top: 40px;
+    left: 70%;
+    width: 50px;
+    height: 50px;
+  }
+  .btn5 {
+    top: 40px;
+    left: 87%;
+    width: 50px;
+    height: 50px;
+  }

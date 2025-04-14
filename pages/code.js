@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Attach a click event to the image
     img.addEventListener("click", function() {
       // Redirect to the desired page
-      window.location.href = "page1.html";
+      window.location.href = "login.html";
     });
   });
