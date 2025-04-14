@@ -8,16 +8,21 @@
     <link rel="stylesheet" href="global.css">
 </head>
 <body>
-    <canvas id="drawingCanvas" width="800" height="600"></canvas>
+      <div class="phone">
+        <div class="content">
+            <img src="../Images/Chat.png" alt="Login" style="display:block; width:100%; height:auto;">
 
-    <div class="menu-icons">
-        <img src="sprites/Pencil-hl.png" alt="Pencil" id="pencil" data-tool="Pencil" title="Pencil">
-        <img src="sprites/Line.png" alt="Line" id="line" data-tool="Line" title="Line">
-        <img src="sprites/Eraser.png" alt="Eraser" id="eraser" data-tool="Eraser" title="Eraser">
-        <img src="sprites/Cursor.png" alt="Cursor" id="cursor" data-tool="Cursor" title="Cursor">
-        <img src="sprites/Save.png" alt="Save" id="save" data-tool="Save" title="Save">
-        <img src="sprites/ChangeScene.png" alt="ChangeScene" id="changeScene" data-tool="ChangeScene" title="ChangeScene">
-    </div>
+            <div class="menubar-container">
+                <img src="../Images/menubar.png" alt="Menubar" class="menubar-image">
+            
+                <button class="my-button btn1" onclick="window.location.href='newsfeed.html'"></button>
+                <button class="my-button btn3" onclick="window.location.href='find-session.html'"></button>
+                <button class="my-button btn4" onclick="window.location.href='profile.html'"></button>
+                <button class="my-button btn5" onclick="window.location.href='settings.html'"></button>
+              </div>
+          </div>
+        </div>
+      </div>
 
     <script src="code.js"></script>
 </body>
