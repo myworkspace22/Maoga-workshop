@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append('image', file); // send the actual file
         formData.append('field', updateField); // tell backend what field to update
   
-        fetch('http://localhost:3000/upload-image', {
+        fetch('/upload-image', {
           method: 'POST',
           body: formData
         })
@@ -51,3 +51,12 @@ document.addEventListener("DOMContentLoaded", function() {
       bio.blur();
     }
   });
+
+  fetch("/get-userdata/" + 1, {
+    method:"GET"
+  }).then(response => response.json().then(json => {
+    var image = document.getElementById("profileImage")
+    imagePath = json.imagePath
+    image.src = imagePath
+    console.log(json)
+  }))

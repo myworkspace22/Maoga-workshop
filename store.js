@@ -6,8 +6,8 @@ function createUser(username, profile_picture_url, bio) {
 }
 
 // Fetch user by ID
-function getUserById(id) {
-  return knex('users').where({ id }).first();
+async function getUserById(id) {
+  return await knex('users').where({ id }).first();
 }
 
 // Update a user's info

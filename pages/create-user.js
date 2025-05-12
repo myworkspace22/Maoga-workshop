@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bio: "Hey I’m Pernille 👋 I just looooove playing Tetris. Who doesn’t am I right? RødGrødMedFløde 🇩🇰"
     };
 
-    fetch('http://localhost:3000/create-user', {
+    fetch('/create-user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
