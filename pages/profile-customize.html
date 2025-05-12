@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone">
+        <div class="content">
+          <img src="../Images/Change profile.png" alt="Terms" style="display:block; width:100%; height:auto;">
+
+          <div class="menubar-container">
+            <img src="../Images/menubar.png" alt="Menubar" class="menubar-image">
+        
+            <button class="my-button btn1" onclick="window.location.href='newsfeed.html'"></button>
+            <button class="my-button btn2" onclick="window.location.href='chat.html'"></button>
+            <button class="my-button btn3" onclick="window.location.href='find-session.html'"></button>
+            <button class="my-button btn5" onclick="window.location.href='settings.html'"></button>
+          </div>
+
+          <button class="my-button" onclick="window.location.href='profile.html';" style="top: 32px; right: -6px; padding: 22px;"></button>
+
+          <input type="file" id="uploadProfileImage" accept="image/*" style="display: none;" />
+          <img src="../Images/Profile-picture-defualt.png" alt="Profile Picture" id="profileImage" class="profile-picture" style="top: 184px; right: 128px;"/>
+          <button class="my-button" onclick="document.getElementById('uploadProfileImage').click()" style="top: 185px; right: -25px; width: 220px; height: 120px;"></button>
+
+          <input type="file" id="uploadBannerImage" accept="image/*" style="display: none;" />
+          <img onclick="document.getElementById('uploadBannerImage').click()" src="../Images/profile-banner.png" alt="Profile Banner" id="bannerImage" class="profile-banner" style="top: 555px; right: -60px;"/>
+
+          <div class="text" contenteditable="true" style="top: 319px; right: -5px;">Pernille</div>
+
+          <div class="text" contenteditable="true" style="top: 409px; right: -5px;">pacassa</div>
+
+          <div class="bio" contenteditable="true" style="top: 705px; right: -112.5px;">pacassa</div>
+          
+          <button class="my-button" onclick="document.getElementById('uploadProfileImage').click()" style="top: 879px; right: -25px; width: 220px; height: 60px;"></button>
+        </div>
+      </div>
+    <script src="code.js"></script>
+</body>
+</html>

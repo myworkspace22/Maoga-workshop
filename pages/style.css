@@ -7,7 +7,7 @@
     box-sizing: border-box;
     -ms-overflow-style: none;  /* IE, Edge */
     scrollbar-width: none;     /* Firefox */
-    cursor: url(../Images/Ellipse1.png) 16 16, auto;
+    cursor: url(../Images/Cursor.png) 16 16, auto;
 }
 
 .phone::-webkit-scrollbar {
@@ -17,59 +17,111 @@
 .content {
     width: 100%;
     min-height: 100%;
-    position: relative;       /* 1) Container is now positioned */
+    position: relative;
+    cursor: inherit;
 }
 
 .my-button {
-    /* Style your button here */
     position: absolute;
     transform: translate(-50%, -50%);
     background: #4caf4f63;
     color: #fff;
     border: none;
-    cursor: inherit;
+    cursor: pointer;
   }
 
-  .menubar-container {
-    position: absolute;
-    bottom: 0;
-    z-index: 10;
-  }
-  
-  /* Make sure the image is 100% wide (if that's what you want) */
-  .menubar-image {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+.profile-picture {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 113px;
+  height: 113px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center; /* optional: centers the crop */
+}
 
-    .btn1 {
-    top: 40px;       /* relative to .menubar-container’s top */
-    left: 12.5%;
-    width: 50px;
-    height: 50px;
-  }
-  .btn2 {
-    top: 40px;
-    left: 30%;
-    width: 50px;
-    height: 50px;
-  }
-  .btn3 {
-    top: 32px;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-  }
-  .btn4 {
-    top: 40px;
-    left: 70%;
-    width: 50px;
-    height: 50px;
-  }
-  .btn5 {
-    top: 40px;
-    left: 87%;
-    width: 50px;
-    height: 50px;
-  }
+.profile-banner {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 142px;
+  opacity: 90%;
+  object-fit: cover;
+  object-position: center; /* optional: centers the crop */
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.text {
+  font-family: Arial, Helvetica, sans-serif;
+
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 200px; /* fixed width to prevent shifting */
+  font-size: 14px;
+  color: white;
+  text-align: center;
+  white-space: nowrap; /* optional: prevents line break */
+  overflow: hidden;     /* optional: hides overflow */
+}
+
+.bio {
+  font-family: Arial, Helvetica, sans-serif;
+
+  max-height: calc(1.4em * 5);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 310px; /* fixed width to prevent shifting */
+  font-size: 14px;
+  color: white;
+  text-align: left;
+
+  white-space: pre-wrap;
+  overflow: auto;        /* shows scrollbars if content exceeds box */
+  word-break: break-word; /* breaks long words if needed */
+  line-height: 1.4;       /* optional: improves readability */
+}
+
+.menubar-container {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+}
+
+.menubar-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+  .btn1 {
+  top: 40px;
+  left: 12.5%;
+  width: 50px;
+  height: 50px;
+}
+.btn2 {
+  top: 40px;
+  left: 30%;
+  width: 50px;
+  height: 50px;
+}
+.btn3 {
+  top: 32px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+}
+.btn4 {
+  top: 40px;
+  left: 70%;
+  width: 50px;
+  height: 50px;
+}
+.btn5 {
+  top: 40px;
+  left: 87%;
+  width: 50px;
+  height: 50px;
+}

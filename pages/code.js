@@ -9,3 +9,30 @@ document.addEventListener("DOMContentLoaded", function() {
       window.location.href = "login.html";
     });
   });
+
+  function handleImageUpload(inputId, imageId) {
+    const input = document.getElementById(inputId);
+    const image = document.getElementById(imageId);
+
+    input.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          image.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  handleImageUpload("uploadProfileImage", "profileImage");
+  handleImageUpload("uploadBannerImage", "bannerImage");
+
+  const bio = document.querySelector('.bio');
+
+  document.addEventListener('click', function (event) {
+    if (!bio.contains(event.target)) {
+      bio.blur();
+    }
+  });
