@@ -10,24 +10,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  function handleImageUpload(inputId, imageId) {
+  function handleImageUpload(inputId, imageId, updateField) {
     const input = document.getElementById(inputId);
     const image = document.getElementById(imageId);
-
+  
     input.addEventListener("change", function () {
       const file = this.files[0];
       if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          image.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
+        // Show image preview
+        const previewURL = URL.createObjectURL(file);
+        image.src = previewURL;
+  
+        const formData = new FormData();
+        formData.append('userId', 1); // or dynamically set userId
+        formData.append('image', file); // send the actual file
+        formData.append('field', updateField); // tell backend what field to update
+  
+        fetch('http://localhost:3000/upload-image', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(`✅ Uploaded ${updateField}:`, data);
+        })
+        .catch(err => {
+          console.error(`❌ Upload failed for ${updateField}:`, err);
+        });
       }
     });
-  }
+  }  
 
-  handleImageUpload("uploadProfileImage", "profileImage");
-  handleImageUpload("uploadBannerImage", "bannerImage");
+  handleImageUpload("uploadProfileImage", "profileImage", "profile_picture_url");
+  handleImageUpload("uploadBannerImage", "bannerImage", "banner_url");  
 
   const bio = document.querySelector('.bio');
 
