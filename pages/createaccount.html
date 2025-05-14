@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <script type="module" src="create-user.js" defer></script> <!-- Update with the correct path to your JS file -->
+    <style>
+        /* Example CSS for positioning */
+        .form-group {
+            margin-bottom: 15px; /* Space between fields */
+        }
+        .form-label {
+            display: block; /* Make labels block elements */
+            margin-bottom: 5px; /* Space between label and input */
+        }
+        .form-input {
+            width: 100%; /* Full width for inputs */
+            padding: 8px; /* Padding for inputs */
+            box-sizing: border-box; /* Include padding in width */
+        }
+    </style>
+</head>
+<body>
+    <h1>Create User</h1>
+    <form id="create-user-form">
+        <div class="form-group">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" class="form-input" required placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" class="form-input" required placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" class="form-input" required placeholder="Choose a username">
+        </div>
+        <div class="form-group">
+            <label for="profile-picture-url" class="form-label">Profile Picture URL:</label>
+            <input type="text" id="profile-picture-url" class="form-input" placeholder="Enter profile picture URL">
+        </div>
+        <div class="form-group">
+            <label for="bio" class="form-label">Bio:</label>
+            <textarea id="bio" class="form-input" placeholder="Tell us about yourself"></textarea>
+        </div>
+        <button type="button" id="create-user-btn">Create User</button>
+    </form>
+</body>
+</html>
