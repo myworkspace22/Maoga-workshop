@@ -2,13 +2,13 @@ console.clear();
 
 document.addEventListener("DOMContentLoaded", function() {
     const img = document.getElementById("startpageImg");
-    const createAccountBtn = document.getElementById("create-account-btn"); // Button for creating an account
+    const createAccountBtn = document.getElementById("create-user-btn"); // Button for creating an account
 
-    // Attach a click event to the image for login
-    img.addEventListener("click", function() {
-        // Redirect to the login page
-        window.location.href = "login.html";
-    });
+    // // Attach a click event to the image for login
+    // img.addEventListener("click", function() {
+    //     // Redirect to the login page
+    //     window.location.href = "login.html";
+    // });
 
     // Attach a click event to the create account button
     createAccountBtn.addEventListener("click", function() {
