@@ -1,11 +1,9 @@
-// Import Supabase client
-import { createClient } from '@supabase/supabase-js';
-
+// import { createClient } from '@supabase/supabase-js';
+const { createClient } = require('@supabase/supabase-js');
 // Initialize Supabase client
 const supabaseUrl = 'https://bvwhbsfcaneqvcymopdu.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2d2hic2ZjYW5lcXZjeW1vcGR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcwNDI0MTksImV4cCI6MjA2MjYxODQxOX0.dJipEwAYxXdKltgxScA_YbJhKgyELO8gnL1Jm5PFDY0';
 const supabase = createClient(supabaseUrl, supabaseKey);
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById('create-user-btn');
@@ -15,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.getElementById('email').value; // Get email from input field
     const password = document.getElementById('password').value; // Get password from input field
 
+    // Validate input fields
+    if (!email || !password) {
+      console.error('❌ Please fill in both email and password fields.');
+      alert('Please fill in both email and password fields.'); // Display alert to user
+      return; // Exit the function if validation fails
+    }
+
     // Create user
     const { user, error } = await supabase.auth.signUp({
       email: email,
@@ -23,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (error) {
       console.error('❌ Failed to create user:', error.message);
+      alert('Failed to create user: ' + error.message); // Display error message to user
     } else {
       console.log('✅ User created:', user);
       // Redirect to profile customization page
