@@ -1,35 +1,53 @@
-const database = require ('db.db3')
-const sqlite3 = require ('sqlite3')
+console.clear();
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Handle create account button
+    const createBtn = document.getElementById("create-user-btn");
+    if (createBtn) {
+        createBtn.addEventListener("click", function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-document.addEventListener('DOMContentLoaded', () =>  {
-  const express = require('express')
-  const button = document.getElementById('create-user-btn');
-
-  button.addEventListener('click', async () => {
-    // Get user input from the form fields
-
-
-
-    express.application.post('/api', (req, res)=>{
-      const username = document.getElementById('username').value; // Hent brgernavn fra input feltet i html
-      const password = document.getElementById('password').value; // Hent password fra input feltet i html
-    })  
-
-    // Validate input fields
-    if (!username || !password) {
-      console.error('Please fill in both email and password fields.');
-      alert('Please fill in both email and password fields.'); // Display alert to user
-      return; // Exit the function if validation fails
+            fetch('/api', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = "profile.html";
+                } else {
+                    alert("Account creation failed.");
+                }
+            });
+        });
     }
 
-    if (error) {
-      console.error('Failed to create user:', error.message);
-      alert('Failed to create user: ' + error.message); // Display error message to user
-    } else {
-      console.log('User created:', user);
-      // Redirect to profile customization page
-      window.location.href = 'profile-customization.html';
+    // Handle login button (if needed)
+    const loginBtn = document.getElementById("login-btn");
+    if (loginBtn) {
+        loginBtn.addEventListener("click", function() {
+            window.location.href = "profile.html";
+        });
     }
-  });
 });
+
+// function createaccount(){
+//   const username = document.getElementById('username').value;
+//   const password = document.getElementById('password').value;
+
+//   fetch('/api', {
+//     method: 'post',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       username: username,
+//       password: password
+//     })
+//   })
+// }

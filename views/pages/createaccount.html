@@ -7,20 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script src="createaccount.js"></script>
     <div class="phone">
         <div class="content" style="position: relative;">
             <img src="../Images/createaccount.png" alt="Create Account" style="display:block; width:100%; height:auto;">
             
             <!-- Overlay CreateUserBTN image as a clickable button -->
-            <img src="../Images/CreateUserBTN.png" alt="Create an account" id="create-user-btn" style="
-                    position: absolute;
-                    left: 50%;
-                    top: 82%; /* Adjust this value to match the button position */
-                    transform: translate(-50%, 0);
-                    width: 80%; /* Adjust to match the button width */
-                    cursor: pointer;
-                    z-index: 3;"
-            />
+            <button onclick="createaccount()"> 
+                <img src="../Images/CreateUserBTN.png" alt="Create an account" id="create-user-btn" style="
+                        position: absolute;
+                        left: 50%;
+                        top: 82%; /* Adjust this value to match the button position */
+                        transform: translate(-50%, 0);
+                        width: 80%; /* Adjust to match the button width */
+                        cursor: pointer;
+                        z-index: 3;"
+                />
+            </button>
 
             <form style="
                 position: absolute;
@@ -55,6 +58,5 @@
             </form>
         </div>
     </div>
-    <script src="createaccount.js"></script>
 </body>
 </html>

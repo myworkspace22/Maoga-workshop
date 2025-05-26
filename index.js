@@ -30,6 +30,7 @@ const port = 3000
 
 // Parsing middleware
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
@@ -48,7 +49,7 @@ app.get ('/api', (req, res)=>{
                 throw err // let the catch handle it
             }
             rows.forEach(row => {
-                data.users.push({id: rows.id, name: rows.username, password:rows.password})
+                data.users.push({id: row.id, name: row.username, password: row.password})
             })
             let content = JSON.stringify(data)
             res.send(content)
@@ -63,21 +64,21 @@ app.get ('/api', (req, res)=>{
 app.post ('/api', (req, res)=>{
     console.log(req.body)
     res.set('content-type', 'application/json')
-    const sql = 'INSERT INTO users(username, password) VALUES(?,?)'
+    const sql = 'INSERT INTO users (username, password) VALUES (? , ?)'
     let newId
     try{
-        DB.run(sql, [req.body.username, req.body.password], function(){
+        DB.run(sql, [req.body.username, req.body.password], function(err){
             if (err) throw err
             newId = this.lastID // giver auto increment integer (user ID)
             res.status(201) // 201 er status for at noget er blevet lavet
-            let data = {status : 201, message: 'user ${newId} saved'}
-            let content = json.stringify(data)
+            let data = {status : 201, message: `user ${newId} saved`}
+            let content = JSON.stringify(data)
             res.send(content)
         })
     }catch (err){
         console.log(err.message)
         res.status(468)
-        res.send('{"code":468, "status":"${err.message}"}')
+        res.send(`{"code":468, "status":"${err.message}"}`)
     }
 })
 
@@ -109,8 +110,8 @@ app.post ('/register', (req, res)=>{
 })
 
 app.get('/', (req, res)=>{
-    res.status(200)
-    res.send('users service har ikke skidt i bukserne')
+    // res.status(200)
+    // res.send('users service har ikke skidt i bukserne')
 })
 
 app.listen(port, () => {console.log(`Server listening on ${port}`)})
