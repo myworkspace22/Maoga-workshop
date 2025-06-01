@@ -26,4 +26,5 @@ document.addEventListener("DOMContentLoaded", function() { // Vi venter på at D
             });
         });
     }
+    
 });

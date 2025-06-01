@@ -8,51 +8,65 @@
 </head>
 <body>
     <script src="createaccount.js"></script>
+    <script src="createaccount_login.js"></script>
+
     <div class="phone">
         <div class="content" style="position: relative;">
+
             <img src="../Images/createaccount.png" alt="Create Account" style="display:block; width:100%; height:auto;">
             
-            <!-- Overlay CreateUserBTN image as a clickable button -->
             <button onclick="createaccount()"> 
                 <img src="../Images/CreateUserBTN.png" alt="Create an account" id="create-user-btn" style="
                         position: absolute;
                         left: 50%;
-                        top: 82%; /* Adjust this value to match the button position */
+                        top: 70%;
                         transform: translate(-50%, 0);
-                        width: 80%; /* Adjust to match the button width */
+                        width: 70%;
                         cursor: pointer;
                         z-index: 3;"
                 />
             </button>
 
+            <button onclick="loginUser()" style="background: none; border: none; padding: 0;">
+                <img src="../Images/LoginUserBTN.png" alt="Login" id="login-user-btn" style="
+                    position: absolute;
+                    left: 50%;
+                    top: 55%;
+                    transform: translate(-50%, 0);
+                    width: 70%;
+                    cursor: pointer;
+                    z-index: 3;"
+                />
+            </button>
+
             <form style="
                 position: absolute;
-                top: 27%; /* Adjust this value to move the fields vertically */
+                top: 35%;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 85%; /* Adjust to match the box width */
+                width: 65%;
                 z-index: 2;
                 display: flex;
                 flex-direction: column;
-                gap: 18px; /* Space between fields */">
+                gap: 25px;">
                 <input type="text" id="username" placeholder="Enter E-Mail" name="username" required style="
                     width: 100%;
-                    height: 56px; /* Adjust to match box height */
+                    height: 56px;
                     background: transparent;
                     color: #fff;
-                    border: 2px solid #a259ff;
+                    border: 1px solid #50508D;
                     border-radius: 16px;
-                    font-size: 18px;
+                    font-size: 16px;
                     text-align: center;
                     outline: none;">
                 <input type="password" id="password" placeholder="Choose your Password" name="password" required style="
                     width: 100%;
-                    height: 56px; /* Adjust to match box height */
+                    height: 56px;
                     background: transparent;
                     color: #fff;
-                    border: 2px solid #a259ff;
+                    border: 1px solid #50508D;
                     border-radius: 16px;
-                    font-size: 18px;
+                    font-size: 16px;
                     text-align: center;
                     outline: none;">
             </form>

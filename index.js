@@ -127,4 +127,56 @@ app.get('/', (req, res)=>{ // Åbner bare her
     // res.send('users service har ikke skidt i bukserne')
 })
 
+// Når der sendes en POST-anmodning til /login, så kører denne funktion
+app.post('/login', (req, res) => {
+    // Sætter svar-typen til JSON, så klienten ved at det er JSON der bliver sendt tilbage
+    res.set('content-type', 'application/json');
+
+    // Vi henter username og password fra det, brugeren har sendt i body'en
+    const { username, password } = req.body;
+
+    // Hvis enten brugernavn eller kodeord mangler, sender vi en fejl (400 Bad Request)
+    if (!username || !password) {
+        res.status(400).send(JSON.stringify({ 
+            code: 400, 
+            message: "Username or password missing" 
+        }));
+        return; // Vi stopper her
+    }
+
+    // SQL-sætning der leder efter en bruger med det indtastede brugernavn og kodeord
+    const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
+
+    try {
+        // Vi sender forespørgslen til databasen med de indtastede værdier
+        DB.get(sql, [username, password], (err, row) => {
+            if (err) {
+                // Hvis der sker en fejl under forespørgslen, kaster vi fejlen
+                throw err;
+            }
+
+            if (row) {
+                // Hvis der findes en bruger (row !== undefined), så sender vi OK (200)
+                res.status(200);
+                res.send(JSON.stringify({
+                    status: 200,
+                    message: `User ${username} logged in`
+                }));
+            } else {
+                // Hvis ingen bruger findes (forkert brugernavn/kodeord), sender vi en fejl (401 Unauthorized)
+                res.status(401);
+                res.send(JSON.stringify({
+                    code: 401,
+                    message: "Invalid username or password"
+                }));
+            }
+        });
+    } catch (err) {
+        // Hvis der sker en anden fejl (fx SQL-fejl), logges den og vi sender en fejl tilbage
+        console.log(err.message);
+        res.status(470); // fejlkode vi bruger til intern fejlhåndtering
+        res.send(`{"code":470, "status":"${err.message}"}`);
+    }
+});
+
 app.listen(port, () => {console.log(`Server listening on ${port}`)}) // Koden lytter efter port, og fortæller sgu at den ikke er døv
