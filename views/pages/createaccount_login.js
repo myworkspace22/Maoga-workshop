@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then(response => {
             // Hvis serveren svarer OK (statuskode 200), går vi videre til "profile.html"
             if (response.ok) {
+                localStorage.setItem('loggedInUser', username); // Gem bruger-navnet lokalt til profil-siden
                 window.location.href = "profile.html";
             } else {
                 // Hvis login mislykkes (fx forkert kode), viser vi en fejlbesked
