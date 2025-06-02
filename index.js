@@ -11,6 +11,8 @@ const DB = new sqlite3.Database('./db.db3', sqlite3.OPEN_READWRITE, connected)
 // Opretter konstant kaldet DB, 
 // ('./db.db3', sqlite3.OPEN_READWRITE, connected) Der opretter koden forbindelse til databasen ved navn db.db3
 // OPEN_READWRITE Det gier mulighed for at skrive og læse
+// Database er et objekt
+// 
 
 function connected(err){ // Ser om der er problemer med at forbinde til DB
     if (err) { 
@@ -29,6 +31,8 @@ DB.run(sql)
 // opretter SQL funktion
 // CREATE TABLE IF NOT EXISTS users
 // opretter id, username, password i table
+// "VARCHAR" er bare en string, som default er 40 tegn.
+
 
 
 // Server handling
@@ -55,7 +59,7 @@ app.use(express.static('views')) // Her sætter vi mappen med siderne som skal l
 app.get ('/api', (req, res)=>{ // Get=Read. Arrow function
     // get all users from the table
     res.set('content-type', 'application/json') // sætter HTTP svar headeren "content-type" til application/json, ergo fortæller browseren at den får JSON snask
-    const sql = 'SELECT * FROM users' // Kan hente specifikt data fra users table
+    const sql = 'SELECT * FROM users' // Den henter alle collums i alle rows i tabellen users (*=alt)
     let data = { users: [] } // sætter funktionen data, som viser indholdet af users
     try{ // forsøg
         DB.all(sql, [], (err, rows)=>{ // henter alle rækker, fra sql ovenfor, hvis der er erros så viser den også dem
@@ -78,7 +82,7 @@ app.get ('/api', (req, res)=>{ // Get=Read. Arrow function
 app.post ('/api', (req, res)=>{ // Post=Create
     res.set('content-type', 'application/json')
     const sql = 'INSERT INTO users (username, password) VALUES (? , ?)' // Vi sætter input ind i username og password (create)
-    let newId // Laver funktion ved navn newId
+    let newId // Laver variabel ved navn newId
     try{
         DB.run(sql, [req.body.username, req.body.password], function(err){ // Her bruger vi bødy parser, til at anmode om username og password
             if (err) throw err // kaster bold
